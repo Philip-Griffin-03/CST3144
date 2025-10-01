@@ -1,24 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
- <meta charset="UTF-8">
- <title>todo</title>
+    <meta charset="UTF-8">
+    <title>to-do</title>
 </head>
+
 <body>
- <h1>My Todo List</h1>
- <input type="text" id="newTask">
- <input type="button" value="add" id="addButton">
- <ul id="taskList"></ul>
- <script>
- let addButton = document.getElementById("addButton");
- let taskList = document.getElementById("taskList");
- addButton.onclick = function() {
- let taskField = document.getElementById("newTask");
- let taskItem = document.createElement("li");
- taskItem.innerText = taskField.value;
- taskList.appendChild(taskItem);
- taskField.value = "second";
- }
- </script>
+    <h1>My To-do List</h1>
+    <input type="text" placeholder="Type" class="newTask" id="newTask">
+    <input type="button" value="add" class="addButton" id="addButton">
+    <ul id="taskList"></ul>
 </body>
+
+
+
+
+<script>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style> 
+    body {background-color: rgb(101,101,101);}
+    h1 {
+        position:fixed;
+        left: 47%;
+        top: 10px;
+    }
+    .addButton {
+        position:fixed;
+        left: 49.5%;
+        top: 175px;
+        border-color: white;
+        width: 100px;
+        height: 50px;
+        background-color: rgb(101,101,101);
+        }  
+    .newTask {
+        position: relative;
+        left: 47.5%;
+        top: 110px;
+    }
+</style>
+
+
+
+
 </html>
