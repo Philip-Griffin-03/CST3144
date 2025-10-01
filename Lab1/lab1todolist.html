@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 <head>
     <meta charset="UTF-8">
     <title>to-do</title>
 </head>
 
 <body>
+
+    <div id="app"> {{message}}</div>
+
     <h1>My To-do List</h1>
     <input type="text" placeholder="Type" class="newTask" id="newTask">
     <input type="button" value="add" class="addButton" id="addButton">
@@ -17,10 +22,21 @@
 
 
 <script>
-    let addButton = document.getElementById("addButton");
-    let taskList = document.getElementById("taskList");
+    //let addButton = document.getElementById("addButton");
+    //let taskList = document.getElementById("taskList");
+
+    const app = Vue.createApp({
+        data(){
+            return {
+                message: "Hello"
+            }
+        }
+    })
+
+    app.mount("#app")
 
     
+
 
 
 
