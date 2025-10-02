@@ -34,16 +34,18 @@
     const app = Vue.createApp({
         data(){
             return {
-                result : 0
+                result : 0,//init every piece of data
+                num1 : 0,
+                num2 : 0
             }
         },
         methods:{
             addnumbers(){
-                this.result = this.num1 + this.num2
+                this.result = Number(this.num1) + Number(this.num2)//make sure to change any input from string to integer
                 return this.result
             },
             multiply(){
-                this.result = this.num1 * this.num2
+                this.result = Number(this.num1) * Number(this.num2)
                 return this.result
             }
         }
