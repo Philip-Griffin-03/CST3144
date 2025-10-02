@@ -10,12 +10,22 @@
 
 <body>
 
-    <div id="app"> {{message}}</div>
+    <div id="app">
+        
+        
+        {{message}}
+
+
+    </div>
 
     <h1>My To-do List</h1>
+
     <input type="text" placeholder="Type" class="newTask" id="newTask">
+
     <input type="button" value="add" class="addButton" id="addButton">
+
     <ul id="taskList"></ul>
+
 </body>
 
 
@@ -28,6 +38,7 @@
     const app = Vue.createApp({
         data(){
             return {
+            
                 message: "Hello"
             }
         }
