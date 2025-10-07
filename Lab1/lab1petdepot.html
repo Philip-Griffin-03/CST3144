@@ -16,19 +16,18 @@
                        
         <h1>{{title}}</h1>
 
-        <div class="lesson">
-
-
+        <div class="product">
             
-            <img :src="lesson.imagepath" :alt="lesson.altimagetext">
+            <img :src="product.imagepath" :alt="product.altimagetext">
             
-            <h2> {{lesson.subject}} </h2>
-            <h2> {{lesson.location}} </h2>
-            <h2 v-html="lesson.subject"></h2><!--use v-html when html tags need to be used-->
-            <h2> Price: £{{lesson.price}} </h2>
+            <h2> {{product.title}} </h2>
+            <h2> {{product.desc}} </h2>
+            <h2 v-html="product.subject"></h2><!--use v-html when html tags need to be used-->
+            <h2> Price: £{{product.price}} </h2>
             <button @click="addlesson" class="addButton">Add</button>
 
 
+            <h1> {{cart}} </h1>
 
 
         </div>
@@ -45,24 +44,27 @@
     const app = Vue.createApp({
         data(){
             return {
-                title: "After School Club",
+                title: "Pet Depot",
 
-                lesson: {
-                    subject: "Maths <em>test</em> ",
-                    location: "London",
-                    price: 100,
-                    imagepath: "./mathicon.jpg",
-                    altimagetext: "Maths Icon"
-                }
+                product: {
+                    id:1001,
+                    title: "Cat food, 25lb bag",
+                    desc: "A 25lb bag is nice",
+                    price: 2000,
+                    imagepath: "./catfood.jpg",
+                    altimagetext: "Cat Food Icon",
+                    stock: 5
+                    
+
+                },
+
+                cart: []
                 
             }
         },
         methods: {
             addlesson(){
-                if (this.message.trim() != ""){
-                    this.messages.push(this.message);
-                    this.message = "";
-                }
+                this.cart.push(this.lesson.id);
             }
         }
     })
@@ -82,13 +84,13 @@
         text-align: center;
     }
 
-    .lesson{
+    .product{
         text-align: center;
         
 
     }
 
-    .lesson img{
+    .product img{
         width: 160px;
         height: 140px;
     }
