@@ -19,12 +19,17 @@
         <div class="lesson">
 
 
-        
+            
             <img :src="lesson.imagepath" :alt="lesson.altimagetext">
             
             <h2> {{lesson.subject}} </h2>
             <h2> {{lesson.location}} </h2>
+            <h2 v-html="lesson.subject"></h2><!--use v-html when html tags need to be used-->
             <h2> Price: £{{lesson.price}} </h2>
+            <button @click="addlesson" class="addButton">Add</button>
+
+
+
 
         </div>
 
@@ -43,7 +48,7 @@
                 title: "After School Club",
 
                 lesson: {
-                    subject: "Maths",
+                    subject: "Maths <em>sdfdfsdf</em> sdfsdfsd",
                     location: "London",
                     price: 100,
                     imagepath: "./mathicon.jpg",
@@ -52,6 +57,14 @@
                 
             }
         },
+        methods: {
+            addlesson(){
+                if (this.message.trim() != ""){
+                    this.messages.push(this.message);
+                    this.message = "";
+                }
+            }
+        }
     })
 
     app.mount("#app")
@@ -78,6 +91,12 @@
     .lesson img{
         width: 160px;
         height: 140px;
+    }
+
+    .addButton{
+        width: 90px;
+        height: 25px;
+        font-size: 18px;
     }
 
 </style>
