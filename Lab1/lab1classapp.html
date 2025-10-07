@@ -12,18 +12,22 @@
 
     <div id="app"> 
         
+
                        
-        <h1>My To-do List</h1>
+        <h1>{{title}}</h1>
 
-        <input v-model="message" placeholder="type:" class="newTask"/>
+        <div class="lesson">
 
-        <ul id="taskList" class="taskList">
-            <li v-for="(messages, index) in messages" :key="index">
-                {{messages}}
-            </li>
-        </ul>
 
-        <button @click="addmessage" class="addButton">Add</button>
+        
+            <img :src="lesson.imagepath" :alt="lesson.altimagetext">
+            
+            <h2> {{lesson.subject}} </h2>
+            <h2> {{lesson.location}} </h2>
+            <h2> Price: £{{lesson.price}} </h2>
+
+        </div>
+
 
     </div>
 
@@ -36,67 +40,46 @@
     const app = Vue.createApp({
         data(){
             return {
-                messages: []
+                title: "After School Club",
+
+                lesson: {
+                    subject: "Maths",
+                    location: "London",
+                    price: 100,
+                    imagepath: "./mathicon.jpg",
+                    altimagetext: "Maths Icon"
+                }
+                
             }
         },
-        methods: {
-            addmessage(){
-                if (this.message.trim() != ""){
-                    this.messages.push(this.message);
-                    this.message = "";
-                }
-            }
-        }
     })
 
     app.mount("#app")
-
-    
-
-
-
 
 
 
 </script>
 
 
-
-
-
-
-
 <style> 
 
     body {background-color: rgb(101,101,101);}
+    
     h1 {
-        position:fixed;
-        left: 47%;
-        top: 10px;
+        text-align: center;
     }
-    .addButton {
-        position:fixed;
-        left: 49%;
-        top: 175px;
-        border-color: white;
-        width: 125px;
-        height: 60px;
-        background-color: rgb(101,101,101);
-        font-size: 25px;
-        }  
-    .newTask {
-        position: relative;
-        width: 270px;
-        height: 30px;
-        left: 42.5%;
-        top: 90px;
+
+    .lesson{
+        text-align: center;
+        
+
     }
-    .taskList {
-        position: fixed;
-        left: 50%;
-        top: 250px;
-        font-size: 25px;
+
+    .lesson img{
+        width: 160px;
+        height: 140px;
     }
+
 </style>
 
 
