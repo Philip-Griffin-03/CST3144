@@ -5,7 +5,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>to-do</title>
+    <title>pet depot</title>
+    
+    
 </head>
 
 <body>
@@ -17,17 +19,35 @@
         <h1>{{title}}</h1>
 
         <div class="product">
+
             
-            <img :src="product.imagepath" :alt="product.altimagetext">
-            
-            <h2> {{product.title}} </h2>
-            <h2> {{product.desc}} </h2>
-            <h2 v-html="product.subject"></h2><!--use v-html when html tags need to be used-->
-            <h2> Price: £{{product.price}} </h2>
-            <button @click="addlesson" class="addButton">Add</button>
 
 
-            <h1> {{cart}} </h1>
+            <div v-if="showproduct">
+
+                <button class="addcart" @click="showcheckout"> <img src="images/cart.png" style="width: 25px; height: 25px;"> Checkout {{cartitemcount}} </button>
+
+                
+                <img class="foodimage" :src="product.imagepath" :alt="product.altimagetext">
+                
+                <h2> {{product.title}} </h2>
+                <h2> {{product.desc}} </h2>
+                <h2 v-html="product.subject"></h2><!--use v-html when html tags need to be used-->
+                <h2> Price: £{{product.price}} </h2>
+                <button class="addButton" @click="addproduct" v-if="cartempty">Add to cart</button>
+
+                <button class="addButton" disabled='disabled' v-else> Add to cart </button>
+
+                <h1> {{cart}} </h1>
+            </div>
+
+            <div v-else>
+                <h1>test</h1>
+                <button @click="showcheckout"> Back to shop</button>
+                <h2> price: £{{pricetotal}} </h2>
+            </div>
+
+            
 
 
         </div>
@@ -45,7 +65,7 @@
         data(){
             return {
                 title: "Pet Depot",
-
+                showproduct: true,
                 product: {
                     id:1001,
                     title: "Cat food, 25lb bag",
@@ -57,14 +77,33 @@
                     
 
                 },
-
                 cart: []
                 
             }
         },
         methods: {
-            addlesson(){
-                this.cart.push(this.lesson.id);
+            addproduct() {
+                this.cart.push(this.product.id);
+            },
+
+            showcheckout() {
+                this.showproduct = this.showproduct ? false:true;
+            }
+
+
+
+        },
+        computed: {
+            cartitemcount() {
+                return this.cart.length || "";
+            },
+
+            cartempty() {
+                return this.product.stock > this.cartitemcount;
+            },
+
+            pricetotal() {
+                return this.cart.length * this.product.price || 0;
             }
         }
     })
@@ -77,6 +116,19 @@
 
 
 <style> 
+
+    .foodimage {
+        position: relative;
+        right: 55px;
+    }
+
+    .addcart {
+        position: relative;
+        left: 500px;
+        bottom: 175px;
+        font-size: 18px;
+    }
+
 
     body {background-color: rgb(101,101,101);}
     
@@ -96,7 +148,7 @@
     }
 
     .addButton{
-        width: 90px;
+        width: 120px;
         height: 25px;
         font-size: 18px;
     }
