@@ -10,22 +10,26 @@
     
 </head>
 
+
+
 <body>
 
     <div id="app"> 
         
-
+        <header>
+            <h1>{{title}}</h1>
+        </header>
                        
-        <h1>{{title}}</h1>
+
 
         <div class="product">
 
-            
+            <button class="addcart" @click="showcheckout"> <img src="images/cart.png" style="width: 25px; height: 25px;"> Checkout {{cartitemcount}} </button>
+
+
 
 
             <div v-if="showproduct">
-
-                <button class="addcart" @click="showcheckout"> <img src="images/cart.png" style="width: 25px; height: 25px;"> Checkout {{cartitemcount}} </button>
 
                 
                 <img class="foodimage" :src="product.imagepath" :alt="product.altimagetext">
@@ -52,11 +56,19 @@
 
         </div>
 
+        <footer>
+            <p>After School App</p>
+        </footer>
+
+
+
 
     </div>
 
 
 </body>
+
+
 
 
 <script>
@@ -117,20 +129,40 @@
 
 <style> 
 
+    footer {
+        position: fixed;
+        padding: 20px;
+        background-color: rgb(50,50,50);
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        
+    }
+
+    header {
+        position:static;
+        padding: 25px;
+        background-color: rgb(50,50,50);
+    }
+
     .foodimage {
         position: relative;
-        right: 55px;
     }
 
     .addcart {
         position: relative;
-        left: 500px;
-        bottom: 175px;
+        left: 800px;
+        bottom: 85px;
         font-size: 18px;
     }
 
 
-    body {background-color: rgb(101,101,101);}
+    body {
+        background-color: rgb(101,101,101);
+        margin: 0;
+        padding: 0;
+    }
     
     h1 {
         text-align: center;
@@ -138,8 +170,6 @@
 
     .product{
         text-align: center;
-        
-
     }
 
     .product img{
